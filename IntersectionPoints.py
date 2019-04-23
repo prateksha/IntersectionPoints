@@ -47,7 +47,7 @@ with open(fname, 'r') as f:
     for i in range(no_of_lines):
         m, c = map(int, f.readline().split())
         array_of_variables.append([m, c])
-    print array_of_variables
+    print (array_of_variables)
 
 # Sorting based on c
 array_of_variables.sort(key=lambda p:p[1])
