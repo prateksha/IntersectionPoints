@@ -1,3 +1,5 @@
+from sys import argv
+
 def mergeSort(array, sortedArray, left, right):
     mid = (left + right)/2
     inversions = 0
@@ -6,8 +8,6 @@ def mergeSort(array, sortedArray, left, right):
         inversions += mergeSort(array, sortedArray, mid+1, right)
         inversions += merge(array, sortedArray, left, right, mid+1)
     return inversions
-
-
 
 def merge(array, sortedArray, left, right, mid):
     inversions = 0
@@ -41,22 +41,24 @@ def merge(array, sortedArray, left, right, mid):
 
 
 array_of_variables = []
-fname = 'input.txt'
+
+script, fname = argv
+
 with open(fname, 'r') as f:
     no_of_lines = int(f.readline())
     for i in range(no_of_lines):
         m, c = map(int, f.readline().split())
         array_of_variables.append([m, c])
-    print (array_of_variables)
+    #print (array_of_variables)
 
 # Sorting based on c
 array_of_variables.sort(key=lambda p:p[1])
-print(array_of_variables)
+#print(array_of_variables)
 
 slopes_array = [0 for x in range(no_of_lines)]
 for i in range(no_of_lines):
     slopes_array[i] = array_of_variables[i][0]
-print(slopes_array)
+#print(slopes_array)
 
 sorted_array = []
 for i in range(len(slopes_array)):
