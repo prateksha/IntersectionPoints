@@ -135,7 +135,49 @@ Hence, counting the number of inversions in the sorted M array will give us the 
 
 - _**Claim 1**_ : *merge_and_count merges two given sorted arrays.*
 
-Let A
+    Let A[1, 2, 3 ... n] and B[1, 2, 3 ... n] be two sorted arrays and let C[1, 2, 3 ... 2n] be the final merged array.
+
+    Proof by induction, (with induction being carried over the insertion of an element to Z)
+
+    **Base Case: i = 1**
+
+    The first element of C, ie C[1] is the minimum of A[i] and B[i].
+
+    Assume, for contradiction, minimum element is isn’t min (A1[1] ,B[1]). 
+
+    ∃ i>1 , such that either A[i] or B[i] is the minimum. Without loss of generailty assume A[i] is the minimum.
+
+    but this means, A[i] < A[1] which is a contradiction to the assumption that both the arrays are sorted
+
+    
+    **Assuming it is true for all i = k-1**
+
+    At the kth iteration C[k] is the minimum of A[p1] and B[p2].
+    Where p1 and p2 are the pointers to the first element of A and B respectively that has not been added to C.
+
+    Assume, for contradiction, minimum element isn’t the minimum of A[p1] and B[p2]. 
+    ∃ i>p1 and j>p2, such that the minimum(A[i], B[j]) is the minimum and is added to C.
+    Assume without loss of generailty let A[i] is the minimum.
+            
+    A[i] < A[p1] => contradiction to the assumption that the array A is sorted. 
+
+    Hence, this assumption has been proved
+
+- **__Claim 2__** : *merge_and_sort sorts the given array.*
+    
+    Proof by Strong Induction (induction on the size of the array):
+
+    for an array of size i = 1 : trivially true (since an array of size 1 is already sorted).
+
+    For the inductive step : assuming that merge_and_sort sorts any array of size less than n.
+
+    Proving merge_and_sort on any array of size n.
+
+    We know that merge_and_sort will recursively merge_and_sort on two arrays of size n/2. By the inductive hypothesis these two arrays are sorted correctly. From claim 1, we can say that the the two arrays are merged correctly from indices i = 1, 2, 3 ... n/2 and j = n/2 + 1, n/2+2, ... n and hence the array is sorted correctly.
+
+- **__Claim 3__** : 
+
+
 
 
 ## Analysis of Running Time
