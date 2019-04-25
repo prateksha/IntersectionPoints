@@ -1,6 +1,6 @@
 import random
 # Number of Equations
-n = 50
+n = 60
 
 # Array to store the values of slopes
 m = []
@@ -11,7 +11,7 @@ c = []
 c = random.sample(range(700),n)
 
 # Writing the values to the file in the required input format
-f = open("large_input.txt","w+")
+f = open("TestCases/large_input.txt","w+")
 f.write(str(n) + "\n")
 
 for i in range(n):
