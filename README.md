@@ -68,7 +68,7 @@ A and B are two sorted lists. i, j are the pointers to the lists.
 
 ~~~~
 merge_and_count (A, B)
-
+    C = []
     count = 0
     while (A != empty and B!= empty)
         C.append( min(A[i], B[j])
@@ -135,7 +135,7 @@ Hence, counting the number of inversions in the sorted M array will give us the 
 
 - _**Claim 1**_ : *merge_and_count merges two given sorted arrays.*
 
-
+Let A
 
 
 ## Analysis of Running Time
