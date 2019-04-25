@@ -100,6 +100,33 @@ sort_and_count (C)
 ~~~~
 ## Proof Of Correctness
 
+Sort the array of m’s in the ascending order. Array after sorting - [ c<sub>1</sub>, c<sub>2</sub>, c<sub>3</sub>, ... c<sub>n</sub>] such that c<sub>1</sub>, c<sub>2</sub>, c<sub>3</sub>, ... c<sub>n</sub>. Therefore, for all c<sub>i</sub> , c<sub>i</sub> < c<sub>j</sub> is true if j > i. To find the required intersection points, we need to find points such that m<sub>i</sub> > m<sub>j</sub>.
+
+The problem has been reduced to counting inversions in an array, which is shown below.
+
+Consider 2 equations .
+1. y = m<sub>1</sub>x + c<sub>1</sub>
+2. y = m<sub>2</sub>x + c<sub>2</sub>
+
+
+Since no 2 lines are parallel to each other, Line 1 and Line 2 must intersect.
+
+<p align ="center"> m<sub>1</sub>x + c<sub>1</sub>  = m<sub>2</sub>x + c<sub>2</sub> <br> x = (c<sub>1</sub> - c<sub>2</sub>)/(m<sub>2</sub> - m<sub>1</sub>)</p>
+
+Since the intersection point has to lie on the right side of the line x = 0 ( y-axis ), we will consider the case where value of ‘x’ in Eq. 3 is greater > 0. 
+
+<p align ="center"> i.e., (c<sub>1</sub> - c<sub>2</sub>)/(m<sub>2</sub> - m<sub>1</sub>) > 0 <br>
+
+For the above equation to be true, the values of c (y-intercept) and m (slope) have to satisfy one of the following conditions:<br>
+<p align = "center">
+ c<sub>1</sub> > c<sub>2</sub> AND m<sub>2</sub> > m<sub>1</sub> 
+ <br>
+ c<sub>1</sub> < c<sub>2</sub> AND m<sub>2</sub> < m<sub>1</sub> </p>
+
+
+
+
+
 ## Analysis of Running Time
 
 The Recurrence Relation for MergeSort is:
@@ -137,3 +164,5 @@ T(n) = n(T(1)) + n log(n) = O(n log(n))
 - **Ayush** : Wrote the proof of correctness and running time analysis. Wrote sample test cases. Completed the README for TestCase formats.
 
 
+Ayush Yadav : Wrote Proof of Correctness, W
+Prateksha Udhayanan : Moral Suport, got coffee twice.
