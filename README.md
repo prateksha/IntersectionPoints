@@ -4,7 +4,7 @@
 #### <p align="right"> Ayush Yadav (IMT2017009) <br> Prateksha U (IMT2017517) </p>
 
 
-## PROBLEM STATEMENT
+## Problem Statement
 You are given equations of ​n​ lines as input. The equation of a line is of the form ​y=mx+c​ where ​m​ is the slope and ​c​ is the y-intercept. Design an ​O(n log n)algorithm that counts the number of intersection points that lie on the right side of the line x=0 (y-axis).
 
 The following assumptions have been made:
@@ -51,6 +51,19 @@ For the above equation to be true, the values of c (y-intercept) and m (slope) h
  c<sub>1</sub> < c<sub>2</sub> AND m<sub>2</sub> < m<sub>1</sub> </p>
 
 ## PSEUDO CODE
+
+Input:  input_array consists of **n** [m,c] pairs.
+
+~~~~
+input_array.sort -> based on c values (y-intercept)
+m_array = []
+
+for 1 to n:
+    m_array[i] = input_array[i][0] 
+
+sort_and_count(m_array)
+~~~~
+
 A and B are two sorted lists. i, j are the pointers to the lists.
 
 ~~~~
@@ -73,14 +86,14 @@ merge_and_count (A, B)
 With merge-and-count, we can design the count inversion algorithm as follows:
 
 ~~~~
-mergeSort_and_count (C)
+sort_and_count (C)
 
     if ( C has one element)
         return 0
     else
         divide C into A and B
-        (c1, A) = mergeSort_and_count (A)
-        (c2, B) = mergeSort_and_count (B)
+        (c1, A) = sort_and_count (A)
+        (c2, B) = sort_and_count (B)
         (c3, C) = merge_and_count(A, B)
 
     return c1+c2+c3, C
@@ -116,5 +129,11 @@ T(n) = n(T(1)) + n log(n) = O(n log(n))
 ## Instructions on how to run the code
 - The code is written in Python. The code can be run by using the following command for a given input file (Suppose the input file name is **input1.txt**)  -  **python IntersectionPoints.py TestCases/input1.txt**
 - The **generate_input.py** generates random input values for a large value of **n**. It is written to the file **large_input.txt**. The value of **n** can be changed in the code for a different set of inputs.
+
+## Individual Contributions
+
+- **Prateksha** : Wrote the code. Wrote the script for generating large inputs. Completed other sections of README.
+
+- **Ayush** : Wrote the proof of correctness and running time analysis. Wrote sample test cases. Completed the README for TestCase formats.
 
 
