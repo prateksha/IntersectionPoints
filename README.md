@@ -36,6 +36,15 @@ The above input has been written in "input2.txt" file and has been tested with t
 
 ![alt text](Plot.png "Plot for the Example")
 
+## ALGORITHM
+
+1. Take the input in the form of [m,c] pairs.
+2. Sort the input 2-D array based on the c values(y-intercept) using Python’s default sort algorithm. Now we have the values such that it is in ascending order with respect to c.
+3. Array after sorting - [c<sub>1</sub> , c<sub>2</sub> , c<sub>3</sub> ... c<sub>n</sub>] such that c<sub>1</sub> < c<sub>2</sub> < c<sub>3</sub> ... c<sub>n</sub>.
+4. To find the required intersection points, we need to find points such that m<sub>i</sub> > m<sub>j</sub> where i<j. Add all the m values from the input array to Array M.
+5. Modify merge sort algorithm to count the number of inversions in Array M.
+6. The number of count inversions in array M IS EQUAL to the number of intersection points that lie on the right side of the y-axis.
+
 ## PSEUDO CODE
 
 Input:  input_array consists of **n** [m,c] pairs.
