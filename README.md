@@ -29,26 +29,7 @@ We used 2-D Array for storing [ slope, y-intecept ] input.
 4.  y = x + 1
 5.  y= -3x + 7
 
-![alt text](/Plot.png "Plot for the Example")
-
-Consider 2 equations .
-1. y = m<sub>1</sub>x + c<sub>1</sub>
-2. y = m<sub>2</sub>x + c<sub>2</sub>
-
-
-Since no 2 lines are parallel to each other, Line 1 and Line 2 must intersect.
-
-<p align ="center"> m<sub>1</sub>x + c<sub>1</sub>  = m<sub>2</sub>x + c<sub>2</sub> <br> x = (c<sub>1</sub> - c<sub>2</sub>)/(m<sub>2</sub> - m<sub>1</sub>)</p>
-
-Since the intersection point has to lie on the right side of the line x = 0 ( y-axis ), we will consider the case where value of ‘x’ in Eq. 3 is greater > 0. 
-
-<p align ="center"> i.e., (c<sub>1</sub> - c<sub>2</sub>)/(m<sub>2</sub> - m<sub>1</sub>) > 0 <br>
-
-For the above equation to be true, the values of c (y-intercept) and m (slope) have to satisfy one of the following conditions:<br>
-<p align = "center">
- c<sub>1</sub> > c<sub>2</sub> AND m<sub>2</sub> > m<sub>1</sub> 
- <br>
- c<sub>1</sub> < c<sub>2</sub> AND m<sub>2</sub> < m<sub>1</sub> </p>
+![alt text](Plot.png "Plot for the Example")
 
 ## PSEUDO CODE
 
@@ -198,7 +179,7 @@ Since we know from Claims 1 and 2, that the algorithm sorts the given array.
 
  At some point array A shall contain Z[i] and array B shall contain Z[j]. merge_and_count cannot exhaust all of A before Z[j] comes before Z[i] (since the array is being sorted) and hence is counted in the inversions.
 
-**__Claim 5__** : *merge_and_count does not count any inversion more than once.*
+- **__Claim 5__** : *merge_and_count does not count any inversion more than once.*
 
  An inversion pair *a*, *b* can only contribute to a count when *a* ∈ A and *b* ∈ B in some invocation of Merge-and-Count. Since A and B are merged during that invocation, this removes the inversion (by sorting the array) and hence the pair a, b can contribute to the count in exactly one invocation of Merge-and-Count. During that invocation when an inversion pair a, b does contribute to the count (claim 4), the inversion is **removed** since the final sorted array C, is used in the further invocations of merge_and_count.
 
