@@ -104,27 +104,28 @@ For the above equation to be true, the values of c (y-intercept) and m (slope) h
 
 The above relation of intersection points can be reduced to a prolem of counting inversions as shown below.
 
-Sorting the array of slopes (call this array M) (i.e., [m<sub>1</sub>, m<sub>2</sub>,m<sub>3</sub> ... m<sub>n</sub>]) on the basis of the corresponding c (y-intercept) values.
+
+The array of slopes say, M (i.e., [m<sub>1</sub>, m<sub>2</sub>,m<sub>3</sub> ... m<sub>n</sub>]) is such that the corresponding c values are sorted (i.e., c<sub>1</sub> < c<sub>2</sub> < c<sub>3</sub> ... c<sub>n</sub>)
 
 We get an array such that, ∀ i, j ∈ indices of M. 
 <p align = "center"> i < j  ⇒ c<sub>i</sub> < c<sub>j</sub> ----(3)</p align = "center">
 and if,
 <p align = "center"> M[i] > M[j] ----(4)</p align = "center">
-we can say that the point of the intersection of the two lines is beyond the x-axis (from (1) and (2)). The above relations (3) and (4) show the reduction of the intersection pairs problems into the counting inversions problem.
+we can say that the point of the intersection of the two lines is beyond the y-axis (from (1) and (2)). The above relations (3) and (4) show the reduction of the intersection points problem into the counting inversions problem.
 
-Hence, counting the number of inversions in the sorted M array will give us the number of intersection points beyond the x-axis.
+Hence, counting the number of inversions in the M array will give us the number of intersection points on the right side of the y-axis.
 
 - _**Claim 1**_ : *merge_and_count merges two given sorted arrays.*
 
     Let A[1, 2, 3 ... n] and B[1, 2, 3 ... n] be two sorted arrays and let C[1, 2, 3 ... 2n] be the final merged array.
 
-    Proof by induction, (with induction being carried over the insertion of an element to Z)
+    Proof by induction, (with induction being carried over the insertion of an element to C)
 
     **Base Case: i = 1**
 
     The first element of C, ie C[1] is the minimum of A[i] and B[i].
 
-    Assume, for contradiction, minimum element is isn’t min (A1[1] ,B[1]). 
+    Assume, for contradiction, minimum element isn’t min(A1[1] ,B[1]). 
 
     ∃ i>1 , such that either A[i] or B[i] is the minimum. Without loss of generailty assume A[i] is the minimum.
 
@@ -133,7 +134,7 @@ Hence, counting the number of inversions in the sorted M array will give us the 
     
     **Assuming it is true for all i = k-1**
 
-    At the kth iteration C[k] is the minimum of A[p1] and B[p2].
+    At the k<sup>th</sup> iteration C[k] is the minimum of A[p1] and B[p2].
     Where p1 and p2 are the pointers to the first element of A and B respectively that has not been added to C.
 
     Assume, for contradiction, minimum element isn’t the minimum of A[p1] and B[p2]. 
@@ -150,7 +151,7 @@ Hence, counting the number of inversions in the sorted M array will give us the 
 
     for an array of size i = 1 : trivially true (since an array of size 1 is already sorted).
 
-    For the inductive step : assuming that merge_and_sort sorts any array of size less than n.
+    For the inductive step : assuming that merge_and_sort sorts every array of size less than n.
 
     Proving merge_and_sort on any array of size n.
 
@@ -158,30 +159,30 @@ Hence, counting the number of inversions in the sorted M array will give us the 
 
 - **__Claim 3__** : *when an inversion is observed, all elements in A which have not been added to C should be counted as inversions*
 
-When the algorithm compares A<sub>i</sub> to B<sub>j</sub> if A<sub>i</sub> > B<sub>j</sub>, then an inversion exists (since *b* array is to the right of *a* array and should have ∀i ∀j, j>i since j marks the indicies of the right half-array and i marks the indices for the left half-array).
+    When the algorithm compares A<sub>i</sub> to B<sub>j</sub> if A<sub>i</sub> > B<sub>j</sub>, then an inversion exists (since the *B* array is to the right of the *A* array and should have ∀i ∀j, j>i since j marks the indicies of the right half-array and i marks the indices for the left half-array).
 
-Since, we know that both arrays are sorted
+    Since, we know that both arrays are sorted
 
-<p align="center"> ∀ k>i,    A<sub>i</sub> < A<sub>k</sub>  </p align = "center">
-<p align="center"> also B<sub>j</sub> < A<sub>i</sub>  (given in the claim)</p align = "center">
-this implies, 
-<p align="center"> ∀ k>i and k < j,  B<sub>j</sub> < A<sub>k</sub> (k < j since j exists in the right array B which will having indicies greater than the largest index in A)</p align = "center">
+    <p align="center"> ∀ k>i,    A<sub>i</sub> < A<sub>k</sub>  </p align = "center">
+    <p align="center"> also B<sub>j</sub> < A<sub>i</sub>  (given in the claim)</p align = "center">
+    this implies, 
+    <p align="center"> ∀ k>i and k < j,  B<sub>j</sub> < A<sub>k</sub> (k < j since j exists in the right array B which will having indicies greater than the largest index in A)</p align = "center">
 
-Therefore all elements in A which have not been added to C are greater than than b<sub>j</sub> and thus need to be considered as inversions
+    Therefore all elements in A which have not been added to C are greater than than b<sub>j</sub> and thus need to be considered as inversions
 
-- **__Claim 4__** : *merge_and_count counts every inversion atleast 1*
+- **__Claim 4__** : *merge_and_count counts every inversion atleast once*
 
-Suppose Z[i] > Z[j], in the array Z and i < j, i.e., there is in inversion in the original list.
+    Suppose Z[i] > Z[j], in the array Z and i < j, i.e., there is an inversion in the original list.
 
-The function sort_and_count successively divides the array Z into half arrays A[1,2,3 ... n/2] and B[n/2, n/2+1, ... n], and merges them to give sorted arrays A ∪ B.
+    The function sort_and_count successively divides the array Z into half arrays A[1,2,3 ... n/2] and B[n/2, n/2+1, ... n], and merges them to give sorted arrays A ∪ B.
 
-Since we know from Claims 1 and 2, that the algorithm sorts the given array.
+    Since we know from Claims 1 and 2, that the algorithm sorts the given array.
 
- At some point array A shall contain Z[i] and array B shall contain Z[j]. merge_and_count cannot exhaust all of A before Z[j] comes before Z[i] (since the array is being sorted) and hence is counted in the inversions.
+    At some point array A shall contain Z[i] and array B shall contain Z[j]. merge_and_count cannot exhaust all of A before Z[j] comes before Z[i] (since the array is being sorted) and hence is counted in the inversions.
 
 - **__Claim 5__** : *merge_and_count does not count any inversion more than once.*
 
- An inversion pair *a*, *b* can only contribute to a count when *a* ∈ A and *b* ∈ B in some invocation of Merge-and-Count. Since A and B are merged during that invocation, this removes the inversion (by sorting the array) and hence the pair a, b can contribute to the count in exactly one invocation of Merge-and-Count. During that invocation when an inversion pair a, b does contribute to the count (claim 4), the inversion is **removed** since the final sorted array C, is used in the further invocations of merge_and_count.
+    An inversion pair *a*, *b* can only contribute to a count when *a* ∈ A and *b* ∈ B in some invocation of Merge-and-Count. Since A and B are merged during that invocation, this removes the inversion (by sorting the array) and hence the pair a, b can contribute to the count in exactly one invocation of Merge-and-Count. During that invocation when an inversion pair a, b does contribute to the count (claim 4), the inversion is **removed** since the final sorted array C, is used in the further invocations of merge_and_count.
 
  
 
@@ -196,7 +197,7 @@ T(n) = 2<sup>k</sup>T(n/2<sup>k</sup>) + kn <br>
 </p>
 Proof using Induction:<br>
 For k=1: 
-T(n) = 2T(n/2) + n is true. <br><br>
+T(n) = 2T(n/2) + n is true. <br>
 
 Induction hypothesis: <br>
 T(n) = 2<sup>k-1</sup>T(n/2<sup>k-1</sup>) + (k-1)n <br>
@@ -213,14 +214,18 @@ T(n) = n(T(1)) + n log(n) = O(n log(n))
 
 ## Instructions on how to run the code
 - The code is written in Python. The code can be run by using the following command for a given input file (Suppose the input file name is **input1.txt**)  -  **python IntersectionPoints.py TestCases/input1.txt**
-- The **generate_input.py** generates random input values for a large value of **n**. It is written to the file **large_input.txt**. The value of **n** can be changed in the code for a different set of inputs.
+- The **generate_input.py** generates random input values for a large value of **n**. The input values are written to the file **large_input.txt**. The value of **n** can be changed in the code to generate a different set of inputs.
 
 ## Individual Contributions
 
-- **Prateksha** : Wrote the code. Wrote the script for generating large inputs. Completed other sections of README.
-
-- **Ayush** : Wrote the proof of correctness and running time analysis. Wrote sample test cases. Completed the README for TestCase formats.
-
 - **Combined Contribution** : Came up with the algorithm for the question.
+
+- **Ayush** : Wrote the proof of correctness. Wrote sample test cases. Wrote the script for generating large inputs.
+
+- **Prateksha** : Wrote the code. Completed pseudo code and the running time analysis of README.  Completed the README for TestCase formats.
+
+
+
+
 
 
