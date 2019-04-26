@@ -2,7 +2,7 @@
 
 ## Input format
 -  The first line contains one integer ***n*** - the number of equations of lines.
-- Each of the next ***n*** lines contain two integers ***m*** and ***c*** - the slope of the line and the y-intercept.
+- Each of the next ***n*** lines contain two integers ***m*** and ***c*** separated by a single space- the slope of the line and the y-intercept.
 - It represents the equation of the form y = m*x + c.
 - Ensure that the assumptions given in the problem statement are satisfied. They are as follows:
     -  ***m*** is not equal to 0, ∞. 
