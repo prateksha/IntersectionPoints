@@ -196,7 +196,7 @@ Hence, counting the number of inversions in the M array will give us the number 
 
     An inversion pair *a*, *b* can only contribute to a count when *a* ∈ A and *b* ∈ B in some invocation of Merge-and-Count. Since A and B are merged during that invocation, this removes the inversion (by sorting the array) and hence the pair a, b can contribute to the count in exactly one invocation of Merge-and-Count. During that invocation when an inversion pair a, b does contribute to the count (claim 4), the inversion is **removed** since the final sorted array C, is used in the further invocations of merge_and_count.
 
-
+Therefore, all the inversions in Array M have been counted correctly. This in turn gives us the number of intersection points that lie on the right side of the y-axis.
 
 ## Analysis of Running Time
 
@@ -225,8 +225,10 @@ T(n) = n(T(1)) + n log(n) = O(n log(n))
 <p align = "center"> Time Complexity = θ(n log(n)) </p>
 
 ## Instructions on how to run the code
+
 - The code is written in Python. The code can be run by using the following command for a given input file (Suppose the input file name is **input1.txt**)  -  **python IntersectionPoints.py TestCases/input1.txt**
 - The **generate_input.py** generates random input values for a large value of **n**. The input values are written to the file **large_input.txt**. The value of **n** can be changed in the code to generate a different set of inputs.
+- The format for TestCases has been defined in the file **Format_For_TestCases.pdf**.
 
 ## Individual Contributions
 
