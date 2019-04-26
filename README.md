@@ -16,10 +16,9 @@ The following assumptions have been made:
 
 ## Sources 
 - Introduction to Algorithms by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein
-- Data Structures and Algorithms course codes
 
 ## Data Structures Used
-We used 2-D Array for storing [ slope, y-intecept ] input.
+We have used a 2-D Array for storing [ slope, y-intecept ] input.
 
 ## Example
 *Number of equations = 5*
@@ -30,6 +29,9 @@ We used 2-D Array for storing [ slope, y-intecept ] input.
 5.  y= -3x + 7
 
 ![alt text](Plot.png "Plot for the Example")
+
+As we can see from the above graph, the number of intersection points that lie on the right side of y-axis = **8**. <br>
+The above input has been written in "input2.txt" file and has been tested with the code. 
 
 ## PSEUDO CODE
 
@@ -57,8 +59,8 @@ merge_and_count (A, B)
             count += number of elements left in A
             j++
         else
-            I++
-        add the remaining elements to c
+            i++
+        add the remaining elements to C
 
     return count, C
 ~~~~
@@ -72,7 +74,7 @@ sort_and_count (C)
     if ( C has one element)
         return 0
     else
-        divide C into A and B
+        divide C into A and B --> A is the left half and B is the right half
         (c1, A) = sort_and_count (A)
         (c2, B) = sort_and_count (B)
         (c3, C) = merge_and_count(A, B)
@@ -103,7 +105,6 @@ For the above equation to be true, the values of c (y-intercept) and m (slope) h
 
 
 The above relation of intersection points can be reduced to a prolem of counting inversions as shown below.
-
 
 The array of slopes say, M (i.e., [m<sub>1</sub>, m<sub>2</sub>,m<sub>3</sub> ... m<sub>n</sub>]) is such that the corresponding c values are sorted (i.e., c<sub>1</sub> < c<sub>2</sub> < c<sub>3</sub> ... c<sub>n</sub>)
 
@@ -172,7 +173,7 @@ Hence, counting the number of inversions in the M array will give us the number 
 
 - **__Claim 4__** : *merge_and_count counts every inversion atleast once*
 
-    Suppose Z[i] > Z[j], in the array Z and i < j, i.e., there is an inversion in the original list.
+    Suppose Z[i] > Z[j], in the array Z and i < j, i.e., there is in inversion in the original list.
 
     The function sort_and_count successively divides the array Z into half arrays A[1,2,3 ... n/2] and B[n/2, n/2+1, ... n], and merges them to give sorted arrays A ∪ B.
 
@@ -222,10 +223,6 @@ T(n) = n(T(1)) + n log(n) = O(n log(n))
 
 - **Ayush** : Wrote the proof of correctness. Wrote sample test cases. Wrote the script for generating large inputs.
 
-- **Prateksha** : Wrote the code. Completed pseudo code and the running time analysis of README.  Completed the README for TestCase formats.
-
-
-
-
+- **Prateksha** : Wrote the code. Completed pseudo code, running time analysis and TestCase formats of README. 
 
 
