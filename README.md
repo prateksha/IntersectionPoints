@@ -14,6 +14,7 @@ The following assumptions have been made:
 - No three lines intersect at the same point. Hence, there are exactly ​n(n-1)/2 intersection points in the configuration.
 - All the intersection points lie in the bounding box [-100,100]x[-100,100]. In other words, the x and y coordinates of any intersection point have an absolute value of at most 100.
 
+[GitHub Link to the Project](https://github.com/prateksha/IntersectionPoints)
 ## Sources
 - Introduction to Algorithms by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein
 
@@ -234,3 +235,4 @@ T(n) = n(T(1)) + n log(n) = O(n log(n))
 - **Ayush** : Wrote the proof of correctness. Wrote sample test cases. Wrote the script for generating large inputs.
 
 - **Prateksha** : Wrote the code. Completed pseudo code, running time analysis and TestCase formats of README.
+
