@@ -190,15 +190,17 @@ Therefore all elements in A which have not been added to C are greater than than
 
 - **__Claim 4__** : *merge_and_count counts every inversion atleast 1*
 
-Suppose Z[i] > Z[j], in the array Z and i < j. This implies that there exists an inversion in the array.
+Suppose Z[i] > Z[j], in the array Z and i < j, i.e., there is in inversion in the original list.
 
-The function sort_and_count successively divides the array Z into half arrays A[1,2,3 ... n/2] and B[n/2, n/2+1, ... n].
+The function sort_and_count successively divides the array Z into half arrays A[1,2,3 ... n/2] and B[n/2, n/2+1, ... n], and merges them to give sorted arrays A ∪ B.
 
-Since we know from Claims 1 and 2, that the algorithm sorts the given array, at some point array A shall contain Z[i] and array B shall contain Z[j]. Merge and Count cannot exhaust all of A before Z[j] comes before Z[i] (since the array is being sorted) and hence is counted in the inersions.
+Since we know from Claims 1 and 2, that the algorithm sorts the given array.
+
+ At some point array A shall contain Z[i] and array B shall contain Z[j]. merge_and_count cannot exhaust all of A before Z[j] comes before Z[i] (since the array is being sorted) and hence is counted in the inversions.
 
 **__Claim 5__** : *merge_and_count does not count any inversion more than once.*
 
- An inversion pair *a*, *b* can only contribute to a count when *a* ∈ A and *b* ∈ B in some invocation of Merge-and-Count. Since A and B become merged during that invocation, this removes the inversion (by sorting the array) and hence the pair a, b can contribute to the count in exactly one invocation of Merge-and-Count. During that invocation when an inversion pair a, b does contribute to the count (claim 3), the inversion is removed since the sorted array C, is used in the further invocations of merge_and_count.
+ An inversion pair *a*, *b* can only contribute to a count when *a* ∈ A and *b* ∈ B in some invocation of Merge-and-Count. Since A and B are merged during that invocation, this removes the inversion (by sorting the array) and hence the pair a, b can contribute to the count in exactly one invocation of Merge-and-Count. During that invocation when an inversion pair a, b does contribute to the count (claim 4), the inversion is **removed** since the final sorted array C, is used in the further invocations of merge_and_count.
 
  
 
