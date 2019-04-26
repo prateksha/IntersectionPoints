@@ -175,10 +175,32 @@ Hence, counting the number of inversions in the sorted M array will give us the 
 
     We know that merge_and_sort will recursively merge_and_sort on two arrays of size n/2. By the inductive hypothesis these two arrays are sorted correctly. From claim 1, we can say that the the two arrays are merged correctly from indices i = 1, 2, 3 ... n/2 and j = n/2 + 1, n/2+2, ... n and hence the array is sorted correctly.
 
-- **__Claim 3__** : 
+- **__Claim 3__** : *when an inversion is observed, all elements in A which have not been added to C should be counted as inversions*
 
+When the algorithm compares A<sub>i</sub> to B<sub>j</sub> if A<sub>i</sub> > B<sub>j</sub>, then an inversion exists (since *b* array is to the right of *a* array and should have ∀i ∀j, j>i since j marks the indicies of the right half-array and i marks the indices for the left half-array).
 
+Since, we know that both arrays are sorted
 
+<p align="center"> ∀ k>i,    A<sub>i</sub> < A<sub>k</sub>  </p align = "center">
+<p align="center"> also B<sub>j</sub> < A<sub>i</sub>  (given in the claim)</p align = "center">
+this implies, 
+<p align="center"> ∀ k>i and k < j,  B<sub>j</sub> < A<sub>k</sub> (k < j since j exists in the right array B which will having indicies greater than the largest index in A)</p align = "center">
+
+Therefore all elements in A which have not been added to C are greater than than b<sub>j</sub> and thus need to be considered as inversions
+
+- **__Claim 4__** : *merge_and_count counts every inversion atleast 1*
+
+Suppose Z[i] > Z[j], in the array Z and i < j. This implies that there exists an inversion in the array.
+
+The function sort_and_count successively divides the array Z into half arrays A[1,2,3 ... n/2] and B[n/2, n/2+1, ... n].
+
+Since we know from Claims 1 and 2, that the algorithm sorts the given array, at some point array A shall contain Z[i] and array B shall contain Z[j]. Merge and Count cannot exhaust all of A before Z[j] comes before Z[i] (since the array is being sorted) and hence is counted in the inersions.
+
+**__Claim 5__** : *merge_and_count does not count any inversion more than once.*
+
+ An inversion pair *a*, *b* can only contribute to a count when *a* ∈ A and *b* ∈ B in some invocation of Merge-and-Count. Since A and B become merged during that invocation, this removes the inversion (by sorting the array) and hence the pair a, b can contribute to the count in exactly one invocation of Merge-and-Count. During that invocation when an inversion pair a, b does contribute to the count (claim 3), the inversion is removed since the sorted array C, is used in the further invocations of merge_and_count.
+
+ 
 
 ## Analysis of Running Time
 
